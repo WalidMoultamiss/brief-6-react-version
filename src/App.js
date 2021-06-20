@@ -8,7 +8,7 @@ import { useState } from 'react'
 const App = ()=> {
 // function App() {
 
-
+  const [showAddTask, setShowAddTask] = useState(false)
 
   const [tasks, setTasks] = useState(
     [
@@ -57,14 +57,15 @@ const App = ()=> {
       setTasks([...tasks,newTask])
     }
 
+    
 
   return (
     <div className="App">
       <div className="container">
       {/* <Header title='hello' /> */}
-      <Header title="task manager" />
+      <Header onAdd={()=> setShowAddTask(!showAddTask)} title="task manager" />
 
-      <AddTask onAdd={addTask} />
+      {showAddTask && <AddTask onAdd={addTask} />}
       {/* <Tasks tasks={tasks} onDelete={deleteTask} /> */}
       {console.log(tasks.length)
         // tasks.map(e => e.id)

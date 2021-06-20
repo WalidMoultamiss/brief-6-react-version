@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import Button from './Button'
-import Tasks from './Tasks'
-const Header = ({ title }) => {
+const Header = ({ title,onAdd }) => {
 
-    const onClick = ()=>{
-        console.log('clickini');
-    }
+    // const onClick = ()=>{
+    //     console.log('clickini');
+    // }
+    // const showAddTask = ()=>{
+    //     console.log('show');
+    // }
+
 
     return (
         <header className="header">
             <h1 style={{color:'black'}}>{title}</h1>
             {/* imbedding */}
             
-            <Button color='green' text='Add' onClick={onClick} />
+            <Button  color='green' text='Add' onClick={onAdd} />
             {/* <h1 style={ headingStyle }>{title}</h1> */}
         </header>
     )
