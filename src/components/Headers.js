@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import Button from './Button'
-const Header = ({ title,onAdd }) => {
+const Header = ({ title,onAdd,showAdd }) => {
 
     // const onClick = ()=>{
     //     console.log('clickini');
@@ -16,7 +16,7 @@ const Header = ({ title,onAdd }) => {
             <h1 style={{color:'black'}}>{title}</h1>
             {/* imbedding */}
             
-            <Button  color='green' text='Add' onClick={onAdd} />
+            <Button  color={showAdd ? 'red' : 'green'}  text={showAdd ? 'close' : 'add'} onClick={onAdd} />
             {/* <h1 style={ headingStyle }>{title}</h1> */}
         </header>
     )

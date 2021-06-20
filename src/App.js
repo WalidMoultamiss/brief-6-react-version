@@ -3,35 +3,40 @@ import Header from './components/Headers';
 import './App.css';
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
-import { useState } from 'react'
+import { useState ,useEffect } from 'react'
 
 const App = ()=> {
 // function App() {
 
   const [showAddTask, setShowAddTask] = useState(false)
 
-  const [tasks, setTasks] = useState(
-    [
-        {
-            id: 1,
-            text: 'Doctor Appointment',
-            day: 'March 2nd at 2:30pm',
-            reminder: true
-        },
-        {
-            id: 2,
-            text: 'Reacting Appointment',
-            day: 'Feb 5th at 3:30pm',
-            reminder: true
-        },
-        {
-            id: 3,
-            text: 'Vue ? what vue',
-            day: 'Feb 5th at 2:30pm',
-            reminder: false
-        },
-    ]
-)
+  const [tasks, setTasks] = useState([])
+
+  useEffect(() => {
+
+    const getTasks = async ()=>{
+      const tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
+    }
+    
+    getTasks()
+  }, [])
+
+
+//fetchTasks
+
+const fetchTasks = async ()=>{
+  const res = await fetch('http://localhost:5001/tasks')
+  const data = await res.json()
+  return data
+
+}
+
+
+
+
+
+
 
 //delete
   
@@ -63,7 +68,7 @@ const App = ()=> {
     <div className="App">
       <div className="container">
       {/* <Header title='hello' /> */}
-      <Header onAdd={()=> setShowAddTask(!showAddTask)} title="task manager" />
+      <Header onAdd={()=> setShowAddTask(!showAddTask)} showAdd={showAddTask} title="task manager" />
 
       {showAddTask && <AddTask onAdd={addTask} />}
       {/* <Tasks tasks={tasks} onDelete={deleteTask} /> */}
