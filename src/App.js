@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Headers';
 import './App.css';
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 import { useState } from 'react'
 
 const App = ()=> {
@@ -25,7 +26,7 @@ const App = ()=> {
         },
         {
             id: 3,
-            text: 'Vue fuck it',
+            text: 'Vue ? what vue',
             day: 'Feb 5th at 2:30pm',
             reminder: false
         },
@@ -47,7 +48,14 @@ const App = ()=> {
     }
 
 
-
+    const addTask = (task) =>{
+      console.log(task);
+      const id = Math.floor(Math.random() * 10000) + 1
+      console.log(id);
+      
+      const newTask ={ id, ...task }
+      setTasks([...tasks,newTask])
+    }
 
 
   return (
@@ -55,6 +63,8 @@ const App = ()=> {
       <div className="container">
       {/* <Header title='hello' /> */}
       <Header title="task manager" />
+
+      <AddTask onAdd={addTask} />
       {/* <Tasks tasks={tasks} onDelete={deleteTask} /> */}
       {console.log(tasks.length)
         // tasks.map(e => e.id)
