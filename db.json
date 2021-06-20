@@ -5,18 +5,24 @@
       "text": "Doctor Appointment",
       "day": "March 2nd at 2:30pm",
       "reminder": true
-  },
-  {
+    },
+    {
       "id": 2,
       "text": "Reacting Appointment",
       "day": "Feb 5th at 3:30pm",
       "reminder": true
-  },
-  {
+    },
+    {
       "id": 3,
       "text": "Vue ? what vue",
       "day": "Feb 5th at 2:30pm",
       "reminder": false
-  }
+    },
+    {
+      "text": "is everything clear",
+      "day": "no nothing is clear",
+      "reminder": true,
+      "id": 4
+    }
   ]
 }

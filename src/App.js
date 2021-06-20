@@ -54,13 +54,26 @@ const fetchTasks = async ()=>{
     }
 
 
-    const addTask = (task) =>{
-      console.log(task);
-      const id = Math.floor(Math.random() * 10000) + 1
-      console.log(id);
+    const addTask = async (task) =>{
+
+      const res = await fetch('http://localhost:5001/tasks/',{
+        method:'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(task)
+      })
+
+      const data = res.json()
+
+      setTasks([...tasks, data])
+
+      // console.log(task);
+      // const id = Math.floor(Math.random() * 10000) + 1
+      // console.log(id);
       
-      const newTask ={ id, ...task }
-      setTasks([...tasks,newTask])
+      // const newTask ={ id, ...task }
+      // setTasks([...tasks,newTask])
     }
 
     
